@@ -30,7 +30,7 @@ module.exports = function(options) {
         if (showFrameAmount) {
           console.log(totalFramesCount);
         }
-
+        var framesInChunk = (totalFramesCount/count).toFixed();
         var startIndex = 0;
         var endIndex = 0;
         var content = '';
@@ -42,12 +42,16 @@ module.exports = function(options) {
             path: path.join(__dirname, prefix + index + "." + ext)
           });
 
-          startIndex = index * totalFramesCount/count;
-          endIndex = ((index + 1) * totalFramesCount/count);
+          startIndex = index * framesInChunk;
+          endIndex = ((index + 1) * framesInChunk);
 
-          content = framesArray.slice(startIndex, endIndex);
-          content = content.join("_");
           if (index !== count - 1) {
+            content = framesArray.slice(startIndex, endIndex);
+            content = content.join("_");
+            content += "_";
+          } else {
+            content = framesArray.slice(startIndex, totalFramesCount);
+            content = content.join("_");
             content += "_";
           }
 
