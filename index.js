@@ -52,7 +52,6 @@ module.exports = function(options) {
           } else {
             content = framesArray.slice(startIndex, totalFramesCount);
             content = content.join("_");
-            content += "_";
           }
 
           tempFile.contents = new Buffer(content);

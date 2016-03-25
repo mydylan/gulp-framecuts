@@ -1,8 +1,9 @@
 var gulp  = require('gulp');
+var argv = require('yargs').argv;
 var fileSplit = require('gulp-file-split');
 var clean = require('gulp-clean');
 var showFramesAmount = argv.amount || false;
-var chunks = argv.chunks || 1,
+var chunks = argv.chunks || 1;
 
 gulp.task('clean', function () {
   gulp.src('dist')
@@ -14,8 +15,8 @@ gulp.task('default', ['clean'], function () {
     .pipe(fileSplit({
       prefix: 'str_',
       ext: 'tv',
-      count: chunks,
-      amount: showFramesAmount
+      chunks: 4,
+      amount: true
     }))
     .pipe(gulp.dest('./dist'));
 });
