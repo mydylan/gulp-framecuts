@@ -12,7 +12,7 @@ Take parameters:
 
 # example
 
-
+```
 gulp.task('cut', ['clean'], function () {
     gulp.src('./src/*.tv')
       .pipe(framecuts({
@@ -23,4 +23,4 @@ gulp.task('cut', ['clean'], function () {
     }))
     .pipe(gulp.dest('./dist'));
  });
-
+```
